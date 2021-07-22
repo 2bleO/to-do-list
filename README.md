@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> Web page to Showcase a Interactive To-do List as Microverse Project.
+> Web page to Showcase an Interactive To-do List as Microverse Project.
 
 ![screenshot](src/Snapshot.png)
 
