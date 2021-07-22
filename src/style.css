@@ -1,3 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #7f8081;
+}
+
 body {
-  background-color: bisque;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
+  border: 1px solid gainsboro;
+  color: #545862;
+}
+
+.sync {
+  transform: rotate(90deg);
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
+}
+
+.taskadder {
+  width: 100%;
+  border: none;
+  font-size: 20px;
+}
+
+.enter-icon {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+
+li p {
+  width: 100%;
+  margin-left: 5px;
+}
+
+button {
+  width: 100%;
+  height: 10vh;
+  border: none;
+  font-size: 20px;
 }
