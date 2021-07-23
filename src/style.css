@@ -71,6 +71,15 @@ li p {
   margin-left: 5px;
 }
 
+.draggable.dragging {
+  opacity: 0.1;
+  background-color: #7f8081;
+}
+
+.drag-btn {
+  cursor: move;
+}
+
 button {
   width: 100%;
   height: 10vh;
