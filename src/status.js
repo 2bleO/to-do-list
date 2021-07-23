@@ -1,4 +1,4 @@
-export default function status(arr) {
+export function status(arr) {
   arr.forEach((element) => {
     const checkbox = document.getElementById(`${element.index}-checkbox`);
     checkbox.addEventListener('change', () => {
@@ -10,5 +10,16 @@ export default function status(arr) {
         window.localStorage.setItem('tasklist', JSON.stringify(arr));
       }
     });
+  });
+}
+
+export function prepopstatus(arr) {
+  arr.forEach((element) => {
+    const checkbox = document.getElementById(`${element.index}-checkbox`);
+    if (element.completed === true) {
+      checkbox.checked = true;
+    } else {
+      checkbox.checked = false;
+    }
   });
 }

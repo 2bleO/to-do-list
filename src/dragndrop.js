@@ -17,6 +17,7 @@ export function eventlisteners(arr) {
       drop.index = draggedIndex;
       task.setAttribute('draggable', false);
       window.localStorage.setItem('tasklist', JSON.stringify(arr));
+      window.location.reload();
     });
     task.addEventListener('dragover', (event) => {
       event.preventDefault();

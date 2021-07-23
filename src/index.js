@@ -2,7 +2,7 @@ import './style.css';
 import {
   mousedown, eventlisteners,
 } from './dragndrop';
-import status from './status';
+import { status, prepopstatus } from './status';
 
 let list = [];
 
@@ -57,6 +57,7 @@ const todoList = (arr) => {
   });
   eventlisteners(arr);
   status(arr);
+  prepopstatus(arr);
 };
 
 const retrieve = () => {
