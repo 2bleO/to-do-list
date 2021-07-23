@@ -1,4 +1,8 @@
 import './style.css';
+import {
+  mousedown, eventlisteners,
+} from './dragndrop';
+import { status, prepopstatus } from './status';
 
 let list = [];
 
@@ -25,18 +29,15 @@ list = [
   },
 ];
 
-const todoList = {
-  run() {
-    list.forEach((element) => {
-      todoList.create(element);
-    });
-  },
-  create(element) {
+let displayedList;
+
+const todoList = (arr) => {
+  arr.forEach((element) => {
     const duties = document.getElementById('duties');
     // Create task li //
     duties.appendChild(document.createElement('li')).setAttribute('id', element.index);
     const task = document.getElementById(element.index);
-    task.classList.add('task');
+    task.classList.add('task', 'draggable');
     // Create checkbox //
     task.appendChild(document.createElement('input')).setAttribute('id', `${element.index}-checkbox`);
     const checkbox = document.getElementById(`${element.index}-checkbox`);
@@ -50,8 +51,23 @@ const todoList = {
     // Create DragBtn //
     task.appendChild(document.createElement('i')).setAttribute('id', `${element.index}-drag`);
     const dragBtn = document.getElementById(`${element.index}-drag`);
-    dragBtn.classList.add('fas', 'fa-ellipsis-v');
-  },
+    dragBtn.classList.add('fas', 'fa-ellipsis-v', 'drag-btn');
+    // Create add event listeners //
+    mousedown(dragBtn);
+  });
+  eventlisteners(arr);
+  status(arr);
+  prepopstatus(arr);
 };
 
-document.addEventListener('load', todoList.run());
+const retrieve = () => {
+  if (JSON.parse(localStorage.getItem('tasklist'))) {
+    displayedList = JSON.parse(localStorage.getItem('tasklist'));
+    todoList(displayedList);
+  } else {
+    displayedList = list;
+    todoList(displayedList);
+  }
+};
+
+document.addEventListener('load', retrieve());
