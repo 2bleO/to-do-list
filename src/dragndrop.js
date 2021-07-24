@@ -1,4 +1,4 @@
-export function eventlisteners(arr) {
+export function dragndrop(arr) {
   arr.forEach((element) => {
     const task = document.getElementById(element.index);
     task.addEventListener('dragstart', (event) => {
