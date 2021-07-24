@@ -14,18 +14,16 @@ export class Duty {
 }
 
 export function removecompleted(arr) {
-  const todelete = [];
   arr.forEach((element) => {
     if (element.completed === true) {
-      todelete.push(element);
-      const filteredArray = arr.filter((item) => !todelete.includes(item));
-      filteredArray.forEach((element) => {
-        element.index = filteredArray.indexOf(element);
-      });
-      window.localStorage.setItem('tasklist', JSON.stringify(filteredArray));
-      window.location.reload();
+      arr.splice(arr.indexOf(element), 1);
     }
   });
+  arr.forEach((element) => {
+    element.index = arr.indexOf(element);
+  });
+  window.localStorage.setItem('tasklist', JSON.stringify(arr));
+  window.location.reload();
 }
 
 export function removeAll(arr) {
