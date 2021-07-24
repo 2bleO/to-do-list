@@ -15,7 +15,8 @@ Minimalist To-Do webapp that allows the user to stay organized by:
 
 ## Live Demo
 
-Coming Soon
+![Online Version](https://2bleo.github.io/to-do-list/)
+
 
 ## Getting Started
 
