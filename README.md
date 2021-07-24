@@ -6,10 +6,10 @@
 
 Minimalist To-Do webapp that allows the user to stay organized by:
 
-Creating a list of tasks
-Mark task as completed
-Remove, Edit and Re-order tasks
-Remove all completed tasks
+- Creating a list of tasks
+- Mark task as completed
+- Remove, Edit and Re-order tasks
+- Remove all completed tasks
 
 ![screenshot](src/Snapshot.png)
 
