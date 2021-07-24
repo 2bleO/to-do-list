@@ -1,34 +1,18 @@
 import './style.css';
 import {
-  mousedown, eventlisteners,
+  mousedown, dragndrop,
 } from './dragndrop';
 import { status, prepopstatus } from './status';
+import {
+  removecompleted, removeAll, Duty, edit, removetask,
+} from './task';
 
-let list = [];
-
-list = [
-  {
-    description: 'Wash clothes',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Cook',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Work',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Exercise',
-    completed: false,
-    index: 3,
-  },
-];
-
+const form = document.getElementById('form');
+const taskinput = document.querySelector('.taskadder');
+const sync = document.querySelector('.sync');
+const entericon = document.querySelector('.enter-icon');
+const deletecompleted = document.getElementById('delcompleted');
+const list = [];
 let displayedList;
 
 const todoList = (arr) => {
@@ -52,12 +36,18 @@ const todoList = (arr) => {
     task.appendChild(document.createElement('i')).setAttribute('id', `${element.index}-drag`);
     const dragBtn = document.getElementById(`${element.index}-drag`);
     dragBtn.classList.add('fas', 'fa-ellipsis-v', 'drag-btn');
+    // create trashcan //
+    task.appendChild(document.createElement('i')).setAttribute('id', `${element.index}-trash`);
+    const trashBtn = document.getElementById(`${element.index}-trash`);
+    trashBtn.classList.add('far', 'fa-trash-alt', 'trash-btn');
     // Create add event listeners //
     mousedown(dragBtn);
   });
-  eventlisteners(arr);
+  dragndrop(arr);
   status(arr);
   prepopstatus(arr);
+  edit(arr);
+  removetask(arr);
 };
 
 const retrieve = () => {
@@ -69,5 +59,31 @@ const retrieve = () => {
     todoList(displayedList);
   }
 };
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (taskinput.value !== '') {
+    const duty = new Duty(taskinput.value);
+    duty.push(displayedList);
+  }
+});
+
+entericon.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (taskinput.value !== '') {
+    const duty = new Duty(taskinput.value);
+    duty.push(displayedList);
+  }
+});
+
+deletecompleted.addEventListener('click', (e) => {
+  e.preventDefault();
+  removecompleted(displayedList);
+});
+
+sync.addEventListener('click', (e) => {
+  e.preventDefault();
+  removeAll(displayedList);
+});
 
 document.addEventListener('load', retrieve());

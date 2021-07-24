@@ -4,36 +4,48 @@
 
 > Web page to Showcase an Interactive To-do List as Microverse Project.
 
+Minimalist To-Do webapp that allows the user to stay organized by:
+
+- Creating a list of tasks
+- Mark task as completed
+- Remove, Edit and Re-order tasks
+- Remove all completed tasks
+
 ![screenshot](src/Snapshot.png)
 
 ## Live Demo
-[Online Version]()
+
+[Online Version](https://2bleo.github.io/to-do-list/)
+
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+Get your copy of this project by cloning the repository:
+(https://github.com/2bleO/to-do-list)
 
 ### Prerequisites
 
-### Setup
+- NodeJS (https://nodejs.org/en/)
+- Webpack {https://webpack.js.org}
 
 ### Install
 
+- npm install
+
 ### Usage
+
+- npm start || npm run build
 
 ### Run tests
 
-### Deployment
+- npm test
 
 ## Built With
 
 - HTML
 - CSS
 - Javascript
+- Node.JS
 
 ## Author
 

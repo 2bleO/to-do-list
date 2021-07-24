@@ -25,6 +25,7 @@ body {
 
 .sync {
   transform: rotate(90deg);
+  cursor: pointer;
 }
 
 form {
@@ -44,6 +45,7 @@ form {
 .enter-icon {
   font-size: 20px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 ul {
@@ -80,9 +82,19 @@ li p {
   cursor: move;
 }
 
+.trash-btn {
+  cursor: pointer;
+  display: none;
+}
+
+.editing {
+  background-color: rgb(136, 241, 198);
+}
+
 button {
   width: 100%;
   height: 10vh;
   border: none;
   font-size: 20px;
+  cursor: pointer;
 }
