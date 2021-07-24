@@ -10,6 +10,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.join(__dirname, '/dist'),
     clean: true,
+    publicPath: '/to-do-list/',
   },
   devtool: 'inline-source-map',
   devServer: {
