@@ -1,4 +1,4 @@
-export class Duty {
+export default class Duty {
   constructor(description) {
     this.description = description;
     this.completed = false;
