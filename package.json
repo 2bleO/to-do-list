@@ -46,6 +46,7 @@
   },
   "main": "webpack.config.js",
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "setupFilesAfterEnv": ["<rootDir>/src/__test__/testSetup.js"]
   }
 }
