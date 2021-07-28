@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --watchAll",
     "watch": "webpack --watch",
     "start": "webpack serve --open",
     "build": "webpack --watch --progress"
@@ -21,13 +21,17 @@
   },
   "homepage": "https://github.com/2bleO/to-do-list#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.0.6",
     "css-loader": "^6.2.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
     "hint": "^6.1.4",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
     "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -40,5 +44,8 @@
   "dependencies": {
     "lodash": "^4.17.21"
   },
-  "main": "webpack.config.js"
+  "main": "webpack.config.js",
+  "jest": {
+    "verbose": true
+  }
 }
