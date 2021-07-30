@@ -31,7 +31,7 @@ form.addEventListener('submit', (e) => {
   if (taskinput.value !== '') {
     const duty = new Duty(taskinput.value);
     store('tasklist', tasklist.add(duty));
-    // window.location.reload();
+    window.location.reload();
   }
 });
 
@@ -40,7 +40,7 @@ entericon.addEventListener('click', (e) => {
   if (taskinput.value !== '') {
     const duty = new Duty(taskinput.value);
     store('tasklist', tasklist.add(duty));
-    // window.location.reload();
+    window.location.reload();
   }
 });
 
@@ -48,12 +48,12 @@ tasklist.storage.forEach((element) => {
   const trashBtn = document.getElementById(`${element.index}-trash`);
   trashBtn.addEventListener('click', () => {
     store('tasklist', tasklist.remove(`${element.index}`));
-    // window.location.reload();
+    window.location.reload();
   });
   const dragBtn = document.getElementById(`${element.index}-drag`);
   dragBtn.addEventListener('click', () => {
     mousedown(element);
-  // window.location.reload();
+    window.location.reload();
   });
   status(element);
   prepopstatus(element);
@@ -62,13 +62,13 @@ tasklist.storage.forEach((element) => {
 deletecompleted.addEventListener('click', (e) => {
   e.preventDefault();
   store('tasklist', tasklist.removecompleted());
-  // window.location.reload();
+  window.location.reload();
 });
 
 sync.addEventListener('click', (e) => {
   e.preventDefault();
   store('tasklist', tasklist.removeAll());
-  // window.location.reload();
+  window.location.reload();
 });
 
 retrieve();

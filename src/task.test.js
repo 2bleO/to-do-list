@@ -1,5 +1,3 @@
-import Tasklist from './tasklist';
-
 describe('add / delete', () => {
   test('push', () => {
     const duty = new Duty();
