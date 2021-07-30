@@ -3,60 +3,26 @@ import {
   mousedown, dragndrop,
 } from './dragndrop';
 import { status, prepopstatus } from './status';
-import {
-  removecompleted, removeAll, Duty, edit, removetask,
-} from './task';
+import store from './store';
+import Duty from './task';
+import Tasklist from './tasklist';
+import render from './render';
 
 const form = document.getElementById('form');
 const taskinput = document.querySelector('.taskadder');
 const sync = document.querySelector('.sync');
 const entericon = document.querySelector('.enter-icon');
 const deletecompleted = document.getElementById('delcompleted');
-const list = [];
-let displayedList;
 
-const todoList = (arr) => {
-  arr.forEach((element) => {
-    const duties = document.getElementById('duties');
-    // Create task li //
-    duties.appendChild(document.createElement('li')).setAttribute('id', element.index);
-    const task = document.getElementById(element.index);
-    task.classList.add('task', 'draggable');
-    // Create checkbox //
-    task.appendChild(document.createElement('input')).setAttribute('id', `${element.index}-checkbox`);
-    const checkbox = document.getElementById(`${element.index}-checkbox`);
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.classList.add('checkbox');
-    // Create description //
-    task.appendChild(document.createElement('p')).setAttribute('id', `${element.index}-description`);
-    const description = document.getElementById(`${element.index}-description`);
-    description.classList.add('description');
-    description.innerText = element.description;
-    // Create DragBtn //
-    task.appendChild(document.createElement('i')).setAttribute('id', `${element.index}-drag`);
-    const dragBtn = document.getElementById(`${element.index}-drag`);
-    dragBtn.classList.add('fas', 'fa-ellipsis-v', 'drag-btn');
-    // create trashcan //
-    task.appendChild(document.createElement('i')).setAttribute('id', `${element.index}-trash`);
-    const trashBtn = document.getElementById(`${element.index}-trash`);
-    trashBtn.classList.add('far', 'fa-trash-alt', 'trash-btn');
-    // Create add event listeners //
-    mousedown(dragBtn);
-  });
-  dragndrop(arr);
-  status(arr);
-  prepopstatus(arr);
-  edit(arr);
-  removetask(arr);
-};
+const tasklist = new Tasklist();
 
 const retrieve = () => {
   if (JSON.parse(localStorage.getItem('tasklist'))) {
-    displayedList = JSON.parse(localStorage.getItem('tasklist'));
-    todoList(displayedList);
+    tasklist.storage = JSON.parse(localStorage.getItem('tasklist'));
+    console.log(tasklist);
+    render(tasklist);
   } else {
-    displayedList = list;
-    todoList(displayedList);
+    render(tasklist);
   }
 };
 
@@ -64,7 +30,8 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (taskinput.value !== '') {
     const duty = new Duty(taskinput.value);
-    duty.push(displayedList);
+    store('tasklist', tasklist.add(duty));
+    // window.location.reload();
   }
 });
 
@@ -72,18 +39,37 @@ entericon.addEventListener('click', (e) => {
   e.preventDefault();
   if (taskinput.value !== '') {
     const duty = new Duty(taskinput.value);
-    duty.push(displayedList);
+    store('tasklist', tasklist.add(duty));
+    // window.location.reload();
   }
+});
+
+tasklist.storage.forEach((element) => {
+  const trashBtn = document.getElementById(`${element.index}-trash`);
+  trashBtn.addEventListener('click', () => {
+    store('tasklist', tasklist.remove(`${element.index}`));
+    // window.location.reload();
+  });
+  const dragBtn = document.getElementById(`${element.index}-drag`);
+  dragBtn.addEventListener('click', () => {
+    mousedown(element);
+  // window.location.reload();
+  });
+  status(element);
+  prepopstatus(element);
 });
 
 deletecompleted.addEventListener('click', (e) => {
   e.preventDefault();
-  removecompleted(displayedList);
+  store('tasklist', tasklist.removecompleted());
+  // window.location.reload();
 });
 
 sync.addEventListener('click', (e) => {
   e.preventDefault();
-  removeAll(displayedList);
+  store('tasklist', tasklist.removeAll());
+  // window.location.reload();
 });
 
-document.addEventListener('load', retrieve());
+retrieve();
+dragndrop(tasklist.storage);
